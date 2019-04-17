@@ -1,0 +1,15 @@
+version: '2'
+volumes:
+  postgis-data:
+
+services:
+
+  db:
+    image: cartoview/cartoview-postgis:latest
+    volumes:
+      - 'postgis-data:/var/lib/postgresql'
+    env_file:
+      - ./postgis.env
+    ports:
+      - 25432:5432
+    restart: unless-stopped
